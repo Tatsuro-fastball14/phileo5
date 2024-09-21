@@ -1,2 +1,3 @@
 .bundle/
 backend/
+.DS_Store
