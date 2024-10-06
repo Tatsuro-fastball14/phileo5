@@ -14,8 +14,7 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/edit'
   get 'cooks/show'
-  get '/api/place', to: 'placescont#place'
-
+  get '/api/place', to: 'places#place'
 
    devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   
