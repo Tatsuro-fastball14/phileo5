@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   # devise_for :users
-  devise_for :admins
   get 'places/index'
   get 'cooks/search'
   get '/api/place', to: 'places#place'
