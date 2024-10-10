@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'cooks/search'
   get '/api/place', to: 'places#place'
   
-   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+    resources :cooks, only: [:index, :create] do
 
   root to: "places#index"
 end
