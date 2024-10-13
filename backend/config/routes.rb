@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   get 'cooks/search'
   get '/api/place', to: 'places#place'
   
-    resources :cooks, only: [:index, :create] do
+    resources :places, only: [:index, :create] do
     end
-  root to: "places#index"
 end
 
