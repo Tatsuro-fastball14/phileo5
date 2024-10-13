@@ -1,57 +1,120 @@
 <template>
-  <div>
-    <h1>VueChat - チャットルーム一覧</h1>
-    <ul>
-      <li v-for="room in chatRooms" :key="room.id">
-        <router-link :to="`/rooms/${room.id}`">{{ room.name }}</router-link>
-      </li>
-    </ul>
-    <h3>チャットルーム作成</h3>
-    <input type="text" v-model="newRoomName" />
-    <div>
-      <button @click="createRoom">作成</button>
+  <div id="top-search">
+    <div class="image-container top-search"></div>
+    <div class="image-container top-search2"></div>
+    <div class="image-container top-search3"></div>
+    <div class="text-container">
+      <p><span class="emphasized">"絶対</span>にハズさない"</p>
+      <p>沖縄の美味しいお店を検索できる</p>
+    </div>
+    <div class="search-container">
+      <form @submit="submitSearch" class: "search-form">
+        <input type="sumit" value='next'/>>
+      </form>
     </div>
   </div>
-</template>
-<script>
-import axios from 'axios'
 
-export default {
-  data() {
-    return {
-      chatRooms: [],
-      newRoomName: ''
-    }
-  },
-  created() {
-    // コンポーネントが作成されたときに、チャットルーム一覧を取得する
-    this.fetchChatRooms()
-  },
-  methods: {
-    fetchChatRooms() {
-      axios
-        // 環境変数VITE_API_URLからAPIのURLを取得する
-        .get(`${import.meta.env.VITE_API_URL}/rooms`)
-        .then((response) => {
-          this.chatRooms = response.data
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-    },
-    createRoom() {
-      axios
-        .post(`${import.meta.env.VITE_API_URL}/rooms`, {
-          name: this.newRoomName
-        })
-        .then((response) => {
-          this.chatRooms.push(response.data)
-          this.newRoomName = ''
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-    }
-  }
+  <div v-if="current_user.present">
+    <div class="admin-actions">
+      <button @click= 'DBの登録'></button>
+    </div>
+
+
+  <div v-if "current_user">
+    <div class="user-actions">
+      <button @click='アカウントを削除'></button>
+      <button @click='サブスクを退会'></button>
+    </div>
+
+    <ul>
+      <li v-for="place in places" :key="place.id">{{ place.name }}</li>
+    </ul>
+  </div>
+</template>
+  
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #f9f9f9;
 }
-</script>
+#top-search {
+  width: 100%;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: relative;
+}
+.image-container {
+  width: 33.33%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.top-search {
+  background-image: url("<%= asset_path('chatan.jpg') %>");
+}
+.top-search2 {
+  background-image: url("<%= asset_path('maguro.jpg') %>");
+}
+.top-search3 {
+  background-image: url("<%= asset_path('unazyu.jpg') %>");
+}
+.text-container {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+.text-container .emphasized {
+  font-size: 70px;
+  font-weight: bold;
+  color: white;
+}
+.text-container p {
+  font-size: 50px;
+  margin: 5px 0;
+  color: white;
+}
+.search-container {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+.search-form {
+  display: inline-block;
+  text-align: left;
+}
+.search-form input[type='submit'] {
+  font-size: 40px; /* Increased font size */
+  padding: 20px 40px; /* Increased padding */
+  cursor: pointer;
+}
+.admin-actions,
+.user-actions {
+  margin-top: 20px;
+}
+.admin-actions button,
+.user-actions button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  font-size: 20px;
+  margin: 10px 0;
+}
+</style>
