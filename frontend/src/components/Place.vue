@@ -2,8 +2,8 @@
   <div>
     <h1>VueChat - チャットルーム一覧</h1>
     <ul>
-      <li v-for="place in place" :key="place.id">
-        <router-link :to="`/places/${place.id}`">{{ place.name }}</router-link>
+      <li v-for="room in chatRooms" :key="room.id">
+        <router-link :to="`/rooms/${room.id}`">{{ room.name }}</router-link>
       </li>
     </ul>
     <h3>チャットルーム作成</h3>
@@ -19,21 +19,21 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      places: [],
+      chatRooms: [],
       newRoomName: ''
     }
   },
   created() {
     // コンポーネントが作成されたときに、チャットルーム一覧を取得する
-    this.fetchPlace()
+    this.fetchChatRooms()
   },
   methods: {
-    fetchPlace() {
+    fetchChatRooms() {
       axios
         // 環境変数VITE_API_URLからAPIのURLを取得する
-        .get(`${import.meta.env.VITE_API_URL}/place`)
+        .get(`${import.meta.env.VITE_API_URL}/rooms`)
         .then((response) => {
-          this.place = response.data
+          this.chatRooms = response.data
         })
         .catch((error) => {
           console.error(error)
@@ -41,7 +41,7 @@ export default {
     },
     createRoom() {
       axios
-        .post(`${import.meta.env.VITE_API_URL}/places`, {
+        .post(`${import.meta.env.VITE_API_URL}/rooms`, {
           name: this.newRoomName
         })
         .then((response) => {
