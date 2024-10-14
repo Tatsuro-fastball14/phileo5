@@ -21,7 +21,7 @@
       <button @click="registerInDB">DBの登録</button>
     </div>
   </div>
-
+</template>
   <div v-if="current_user">
     <div class="user-actions">
       <button @click="deleteAccount">アカウントを削除</button>
