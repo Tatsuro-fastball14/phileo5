@@ -1,9 +1,10 @@
 <template>
-  <div id="top-search">
-    <div class="image-container top-search"></div>
-    <div class="image-container top-search2"></div>
-    <div class="image-container top-search3"></div>
-
+  <div id="app">
+    <div id="top-search">
+      <div class="image-container top-search"></div>
+      <div class="image-container top-search2"></div>
+      <div class="image-container top-search3"></div>
+    </div>
     <div class="text-container">
       <p><span class="emphasized">"絶対</span>にハズさない"</p>
       <p>沖縄の美味しいお店を検索できる</p>
@@ -86,15 +87,15 @@ body {
 }
 
 .top-search {
-  background-image: url("<= asset_path('chatan.jpg')>");
+  background-image: url("<= require asset_path('chatan.jpg')>");
 }
 
 .top-search2 {
-  background-image: url("<= asset_path('maguro.jpg')>");
+  background-image: url("<= require asset_path('maguro.jpg')>");
 }
 
 .top-search3 {
-  background-image: url("<= asset_path('unazyu.jpg') >");
+  background-image: url("<= require asset_path('unazyu.jpg')>");
 }
 
 .text-container {
