@@ -15,23 +15,23 @@
         <input type="submit" value="next" />
       </form>
     </div>
-  
 
-  <div v-if="current_user.present">
-    <div class="admin-actions">
-      <button @click="registerInDB">DBの登録</button>
-    </div>
-  </div>
-
-  <div v-if="current_user">
-    <div class="user-actions">
-      <button @click="deleteAccount">アカウントを削除</button>
-      <button @click="unsubscribe">サブスクを退会</button>
+    <div v-if="current_user.present">
+      <div class="admin-actions">
+        <button @click="registerInDB">DBの登録</button>
+      </div>
     </div>
 
-    <ul>
-      <li v-for="place in places" :key="place.id">{{ place.name }}</li>
-    </ul>
+    <div v-if="current_user">
+      <div class="user-actions">
+        <button @click="deleteAccount">アカウントを削除</button>
+        <button button @click="unsubscribe">サブスクを退会</button>
+      </div>
+
+      <ul>
+        <li v-for="place in places" :key="place.id">{{ place.name }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
