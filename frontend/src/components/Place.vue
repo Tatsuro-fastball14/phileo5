@@ -87,15 +87,15 @@ body {
 }
 
 .top-search {
-  background-image: url("<= require asset_path('chatan.jpg')>");
+  background-image: url('@/assets/chatan.jpg');
 }
 
 .top-search2 {
-  background-image: url("<= require asset_path('maguro.jpg')>");
+  background-image: url('@/assets/maguro.jpg');
 }
 
 .top-search3 {
-  background-image: url("<= require asset_path('unazyu.jpg')>");
+  background-image: url('@/assets/unazyu.jpg');
 }
 
 .text-container {
