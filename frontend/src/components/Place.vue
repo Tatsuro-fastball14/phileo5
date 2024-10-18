@@ -15,7 +15,7 @@
         <input type="submit" value="next" />
       </form>
     </div>
-  </div>
+  
 
   <div v-if="current_user.present">
     <div class="admin-actions">
