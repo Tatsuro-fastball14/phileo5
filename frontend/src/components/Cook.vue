@@ -21,49 +21,15 @@
           <img :src="cook.image" alt="Shop Image" class="star-icon" />
         </div>
         <div class="item-price">
-          <div class="avatar">
+          <!-- <div class="avatar">
             <a :href="'/cooks/' + cook.id">
               <img src="avatar.JPG" alt="Avatar" />
             </a>
-          </div>
+          </div> -->
           <h3 class="item-name">{{ cook.store_catchcopy }}</h3>
         </div>
       </div>
-      <button @click="nextPage">Next</button>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      searchQuery: '',
-      cooks: [],
-      currentPage: 1
-    }
-  },
-  methods: {
-    searchStores() {
-      // Make a GET request to your search endpoint
-      fetch(`/cooks/search?store_cont=${this.searchQuery}&page=${this.currentPage}`)
-        .then((response) => response.json())
-        .then((data) => {
-          this.cooks = data.cooks
-        })
-    },
-    nextPage() {
-      this.currentPage += 1
-      this.searchStores() // Fetch the next page of results
-    }
-  },
-  mounted() {
-    // Load initial data when the component is mounted
-    this.searchStores()
-  }
-}
-</script>
-
-<style scoped>
-/* Add your component-specific styles here */
-</style>
