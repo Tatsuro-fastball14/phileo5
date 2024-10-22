@@ -14,6 +14,9 @@
       <form @submit.prevent="submitSearch" class="search-form">
         <input type="submit" value="next" />
       </form>
+      <router-link to="/Cook">
+        <button>cookに遷する</button>
+      </router-link>
     </div>
 
     <div v-if="current_user.present">
