@@ -17,10 +17,13 @@
     <div class="cooks">
       <h1>お店一覧</h1>
       <div v-for="cook in cooks" :key="cook.id" class="item">
-        <div class="item-img">
-          <img :src="cook.image" alt="Shop Image" class="star-icon" />
+        <div class="cook-img-wrap">
+          <img class="cook-img" :src="cook.image" />
         </div>
-        <div class="item-price">
+        <div class="tag-wrap">
+          <div v-for="tag in cook.tags" :key="tag">
+            <label class="tag">{{ tag }}</label>
+          </div>
           <!-- <div class="avatar">
             <a :href="'/cooks/' + cook.id">
               <img src="avatar.JPG" alt="Avatar" />
@@ -32,4 +35,3 @@
     </div>
   </div>
 </template>
-
