@@ -35,3 +35,32 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      searchQuery: '',
+      cooks: [
+        {
+          id: 1,
+          name: 'レストラン A',
+          image: 'IMG_1082jpg',
+          tags: ['イタリアン', 'デザート'],
+          store_catchcopy: '美味しいイタリア料理をどうぞ！'
+        },
+        {
+          id: 2,
+          name: 'カフェ B',
+          image: 'IMG_2784jpg',
+          tags: ['カフェ', '軽食'],
+          store_catchcopy: 'リラックスできるカフェタイム'
+        }
+      ]
+    }
+  }
+}
+</script>
+
+
+
