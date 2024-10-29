@@ -11,24 +11,21 @@
           placeholder="Search stores..."
         />
         <br />
-        <button type="submit">検 索</button>
+        <button type="submit">検索</button>
       </form>
     </div>
     <div class="cooks">
       <h1>お店一覧</h1>
+      <!-- お店情報を繰り返し表示 -->
       <div v-for="cook in cooks" :key="cook.id" class="item">
         <div class="cook-img-wrap">
-          <img class="cook-img" :src="cook.image" />
+          <img class="cook-img" :src="cook.image" alt="店舗画像" />
         </div>
         <div class="tag-wrap">
+          <!-- 各タグを表示 -->
           <div v-for="tag in cook.tags" :key="tag">
             <label class="tag">{{ tag }}</label>
           </div>
-          <!-- <div class="avatar">
-            <a :href="'/cooks/' + cook.id">
-              <img src="avatar.JPG" alt="Avatar" />
-            </a>
-          </div> -->
           <h3 class="item-name">{{ cook.store_catchcopy }}</h3>
         </div>
       </div>
@@ -38,29 +35,18 @@
 
 <script>
 export default {
-  data() {
+  data: function () {
     return {
-      searchQuery: '',
       cooks: [
-        {
-          id: 1,
-          name: 'レストラン A',
-          image: 'IMG_1082jpg',
-          tags: ['イタリアン', 'デザート'],
-          store_catchcopy: '美味しいイタリア料理をどうぞ！'
-        },
-        {
-          id: 2,
-          name: 'カフェ B',
-          image: 'IMG_2784jpg',
-          tags: ['カフェ', '軽食'],
-          store_catchcopy: 'リラックスできるカフェタイム'
-        }
+        { store: 'awamori', lat: 26.2155658, lng: 127.6691134 },
+        { store: 'awamori', lat: 26.176827006031758, lng: 127.6751037628797 },
+        { store: 'awamori', lat: 26.18668612463146, lng: 127.66806564613702 }
       ]
     }
   }
 }
 </script>
+
 
 
 
