@@ -37,6 +37,7 @@
 import axios from 'axios'
 export default {
   data: function () {
+    console.log('check!!')
     return {
       searchQuery: '',
       cooks: [
@@ -49,12 +50,14 @@ export default {
 
   methods: {
     fetchCooks() {
+      console.log('check2!!')
       return axios.get('http://localhost:3000/cooks').then((res) => {
         console.log(res.data)
         this.cooks = res.data
       })
     },
     searchStores() {
+      console.log('check3!!')
       this.fetchCooks()
     }
   }
