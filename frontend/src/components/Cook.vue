@@ -36,7 +36,7 @@
 <script>
 import axios from 'axios'
 export default {
-  data: function () {
+  data() {
     console.log('check!!')
     return {
       searchQuery: '',
@@ -60,6 +60,10 @@ export default {
       console.log('check3!!')
       this.fetchCooks()
     }
+  },
+
+  mounted() {
+    this.fetchCooks()
   }
 }
 </script>
