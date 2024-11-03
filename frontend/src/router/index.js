@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Cook from '../components/Cook.vue';
 import Place from '../components/Place.vue'; // 追加
+// import CookList from './components/CookList.vue'
+
+
 
 const routes = [
   { path: '/', component: Place },
