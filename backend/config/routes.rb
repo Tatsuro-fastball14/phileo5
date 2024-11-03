@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'places/index'
   get 'cooks/search'
   get '/api/place', to: 'places#place'
+  get '/api/test', to: 'application#test'
 
   resources :cooks, only: [:index] do
     collection do
