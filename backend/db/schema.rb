@@ -12,9 +12,16 @@
 
 ActiveRecord::Schema[7.0].define(version: 2024_11_06_051649) do
   create_table "cooks", force: :cascade do |t|
+    t.string "store_catchcopy", null: false
+    t.string "sentence", null: false
+    t.string "address", null: false
+    t.string "phone_number", null: false
+    t.string "store", null: false
+    t.string "category", null: false
+    t.decimal "lat", precision: 8, scale: 6
+    t.decimal "lng", precision: 9, scale: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "store_catchcopy"
   end
 
 end
