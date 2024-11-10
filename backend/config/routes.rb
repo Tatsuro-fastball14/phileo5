@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/api/test', to: 'application#test'
   post  'cooks/new'
 
-  resources :cooks, only: [:index] do
+  resources :cooks, only: [:index, :create] do
     collection do
       get 'search' # /cooks/search へのGETリクエストを設定
     end
