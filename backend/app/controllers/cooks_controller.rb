@@ -19,6 +19,11 @@ class CooksController < ApplicationController
     end
   end
 
+  def show
+    @cook = Cook.find(params[:id])
+    render json: @cook
+  end
+
   def search
     @p = Cook.ransack(params[:q])
     @cooks = @p.result.page(params[:page])
