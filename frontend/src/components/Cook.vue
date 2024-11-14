@@ -44,6 +44,7 @@ export default {
       axios
         .get('http://localhost:3000/cooks')
         .then((response) => {
+          console.log
           this.cooks = response.data
         })
         .catch((error) => {
