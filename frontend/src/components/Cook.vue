@@ -18,8 +18,8 @@
     <h1>お店一覧</h1>
     <!-- お店情報を繰り返し表示 -->
     <ul>
-      <li v-for="cook in cooks" :key="cook.id">
-        <router-link :to="`/cooks/${cook.id}`">{{ cook.name }}</router-link>
+      <li v-for="cook in filteredCooks" :key="cook.id">
+        <router-link :to="`/cooks/${cook.id}`">{{ cook.store }}</router-link>
       </li>
     </ul>
   </div>
@@ -31,30 +31,38 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      cooks: [],
-      searchQuery: '' // searchQuery を追加
+      cooks: [], // お店一覧データを格納する配列
+      searchQuery: '' // 検索キーワード
+    }
+  },
+  computed: {
+    // 検索キーワードに基づいてリアルタイムにフィルタリングされたお店のリストを返す
+    filteredCooks() {
+      return this.cooks.filter((cook) =>
+        cook.store.toLowerCase().includes(this.searchQuery.toLowerCase())
+      )
     }
   },
   mounted() {
-    this.fetchCooks()
+    this.fetchCooks() // コンポーネントがマウントされた時にお店一覧を取得
   },
   methods: {
     fetchCooks() {
-      // メソッド名の修正
+      // お店一覧を取得するメソッド
       axios
-        .get('http://localhost:3000/cooks')
+        .get('http://localhost:3000/cooks') // エンドポイントを一覧取得用に修正
         .then((response) => {
-          console.log
+          console.log('Fetched data:', response.data) // データの確認用ログ
           this.cooks = response.data
         })
         .catch((error) => {
-          console.error(error)
+          console.error('エラーが発生しました:', error) // エラーログの出力
         })
     },
     searchStores() {
-      // searchStores メソッドの実装例
-      // キーワードに基づいてフィルタリングやAPIリクエストを実行する処理
+      // 検索フォームのサブミットで検索キーワードをコンソールに表示
       console.log(`Searching for: ${this.searchQuery}`)
+      // filteredCooksはcomputedプロパティで自動更新されるため追加の処理は不要
     }
   }
 }
