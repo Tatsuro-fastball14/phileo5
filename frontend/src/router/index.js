@@ -1,0 +1,19 @@
+import { createRouter, createWebHistory } from 'vue-router';
+import Cook from '../components/Cook.vue';
+import Place from '../components/Place.vue'; // 追加
+// import CookList from './components/CookList.vue'
+
+
+
+const routes = [
+  { path: '/', component: Place },
+  { path: '/cook.id', component: Cook },
+  // { path: '/place/:id', component: Place, props: route => ({ roomId: route.params.id }) }, // 追加
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+export default router;
