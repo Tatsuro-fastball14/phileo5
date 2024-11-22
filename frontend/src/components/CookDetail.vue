@@ -38,7 +38,7 @@ export default {
   methods: {
     fetchCooks() {
       axios
-        .get('http://localhost:3000/cooks/${this.$route.params.id}`)')
+        .get(`http://localhost:3000/cooks/${cookId}`)
         .then((response) => {
           this.cooks = response.data
         })

@@ -26,8 +26,9 @@ export default {
   },
   created() {
     // コンポーネントが作成されたときにデータを取得
-    axios
-      .get('http://localhost:3000/cooks')
+    axios.get('http://localhost:3000/cooks')
+    console
+      .log('取得した店舗データ:', response.data)
       .then((response) => {
         this.cooks = response.data
       })
