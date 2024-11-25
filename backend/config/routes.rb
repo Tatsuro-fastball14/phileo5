@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   get '/api/place', to: 'places#place'
   get '/api/test', to: 'application#test'
   post  'cooks/new'
+  get 'cooks/show'
+  
 
-  resources :cooks, only: [:index, :create,:show] do
+  resources :cooks, only: [:index, :new, :create, :show] do
     collection do
       get 'search' # /cooks/search へのGETリクエストを設定
     end
