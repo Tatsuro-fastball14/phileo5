@@ -4,12 +4,12 @@
     <ul>
       <li v-for="cook in filteredCooks" :key="cook.id" class="cook-card">
         <!-- カード全体をクリック可能にする -->
-        <nuxt-link :to="generateDetailURI(cook.id)" class="cook-link">
+        <router-link :to="generateDetailURI(cook.id)" class="cook-link">
           <div class="card-content">
             <h2>{{ cook.store }}</h2>
             <p>{{ cook.description }}</p>
           </div>
-        </nuxt-link>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -38,7 +38,7 @@ export default {
   methods: {
     fetchCooks() {
       axios
-        .get(`http://localhost:3000/cooks/${cookId}`)
+        .get(`http://localhost:3000/cooks`)
         .then((response) => {
           this.cooks = response.data
         })
