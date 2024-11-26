@@ -1,3 +1,8 @@
+config.jwt do |jwt|
+  jwt.secret = Rails.application.credentials.devise[:jwt_secret_key]
+end
+
+
 # frozen_string_literal: true
 
 # Assuming you have not yet modified this file, each configuration option below

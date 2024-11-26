@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # devise_for :users
   get 'places/index'
   get 'cooks/search'
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   get '/api/test', to: 'application#test'
   post  'cooks/new'
   
+  devise_for :users
 
   resources :cooks, only: [:index, :new, :create, :show] do
     collection do
