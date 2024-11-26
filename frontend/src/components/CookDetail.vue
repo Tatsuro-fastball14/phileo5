@@ -1,17 +1,15 @@
 <template>
-  <div class="wrapper">
-    <h1>お店一覧</h1>
-    <ul>
-      <li v-for="cook in filteredCooks" :key="cook.id" class="cook-card">
-        <!-- カード全体をクリック可能にする -->
-        <router-link :to="generateDetailURI(cook.id)" class="cook-link">
-          <div class="card-content">
-            <h2>{{ cook.store }}</h2>
-            <p>{{ cook.description }}</p>
-          </div>
-        </router-link>
-      </li>
-    </ul>
+  <div>
+    <h1>店舗詳細</h1>
+    <div v-if="cook">
+      <p><strong>店舗名:</strong> {{ cook.store }}</p>
+      <p><strong>キャッチコピー:</strong> {{ cook.store_catchcopy }}</p>
+      <p><strong>住所:</strong> {{ cook.address }}</p>
+      <p><strong>電話番号:</strong> {{ cook.phone_number }}</p>
+    </div>
+    <div v-else>
+      <p></p>
+    </div>
   </div>
 </template>
 
@@ -21,34 +19,24 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      cooks: [], // お店一覧データを格納する配列
-      searchQuery: '' // 検索キーワード
+      cook: null // 店舗データ
     }
   },
-  computed: {
-    filteredCooks() {
-      return this.cooks.filter((cook) =>
-        cook.store.toLowerCase().includes(this.searchQuery.toLowerCase())
-      )
+  created() {
+    const cookId = this.$route.params.id // URL から ID を取得
+    if (!cookId) {
+      console.error('ID が URL にありません')
+      return
     }
-  },
-  mounted() {
-    this.fetchCooks()
-  },
-  methods: {
-    fetchCooks() {
-      axios
-        .get(`http://localhost:3000/cooks`)
-        .then((response) => {
-          this.cooks = response.data
-        })
-        .catch((error) => {
-          console.error('エラーが発生しました:', error)
-        })
-    },
-    generateDetailURI(cookId) {
-      return `/cooks/${cookId}` // 詳細ページのURIを生成
-    }
+
+    axios
+      .get(`http://localhost:3000/cooks/${cookId}`) // Rails の show アクションにリクエスト
+      .then((response) => {
+        this.cook = response.data // レスポンスデータを格納
+      })
+      .catch((error) => {
+        console.error('エラーが発生しました:', error)
+      })
   }
 }
 </script>
