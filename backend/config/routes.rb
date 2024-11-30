@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/api/place', to: 'places#place'
   get '/api/test', to: 'application#test'
   post  'cooks/new'
+  root to: 'cooks#index'
+
   
   resources :cooks, only: [:index, :new, :create, :show] do
     collection do

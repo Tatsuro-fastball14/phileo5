@@ -14,7 +14,7 @@
       <form @submit.prevent="submitSearch" class="search-form">
         <input type="submit" value="next" />
       </form>
-      <router-link to="/Cook">
+      <router-link to="/Cooks">
         <button>cookに遷する</button>
       </router-link>
     </div>
