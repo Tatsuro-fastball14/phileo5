@@ -7,6 +7,8 @@ class Cook < ApplicationRecord
   validates :category, presence: true
   validates :lat, presence: true, numericality: true
   validates :lng, presence: true, numericality: true
+  images: [], # 画像ファイル
+  videos: []  # 動画ファイル
 end
 
 
