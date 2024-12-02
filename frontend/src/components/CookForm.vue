@@ -43,17 +43,6 @@
         <input v-model="lng" type="number" id="lng" required />
       </div>
 
-      <!-- ファイルアップロード -->
-      <div class="form-group">
-        <label for="images">画像を選択</label>
-        <input type="file" id="images" @change="handleFileChange('images', $event)" multiple />
-      </div>
-
-      <div class="form-group">
-        <label for="videos">動画を選択</label>
-        <input type="file" id="videos" @change="handleFileChange('videos', $event)" multiple />
-      </div>
-
       <button type="submit">登録</button>
     </form>
 
@@ -76,22 +65,14 @@ export default {
       category: '',
       lat: '',
       lng: '',
-      images: [], // アップロードする画像
-      videos: [], // アップロードする動画
       message: null,
       errorMessage: null
     }
   },
   methods: {
-    handleFileChange(field, event) {
-      // 画像または動画を配列に格納
-      this[field] = Array.from(event.target.files)
-    },
     async submitForm() {
       try {
         const formData = new FormData()
-
-        // テキストデータを追加
         formData.append('cook[store]', this.store)
         formData.append('cook[store_catchcopy]', this.storeCatchcopy)
         formData.append('cook[sentence]', this.sentence)
@@ -100,16 +81,6 @@ export default {
         formData.append('cook[category]', this.category)
         formData.append('cook[lat]', this.lat)
         formData.append('cook[lng]', this.lng)
-
-        // 画像を追加
-        this.images.forEach((image, index) => {
-          formData.append(`cook[images][]`, image)
-        })
-
-        // 動画を追加
-        this.videos.forEach((video, index) => {
-          formData.append(`cook[videos][]`, video)
-        })
 
         const response = await axios.post('http://localhost:3000/cooks', formData, {
           headers: {
@@ -132,22 +103,7 @@ export default {
       this.category = ''
       this.lat = ''
       this.lng = ''
-      this.images = []
-      this.videos = []
     }
   }
 }
 </script>
-
-<style scoped>
-.form-container {
-  max-width: 500px;
-  margin: 0 auto;
-}
-.success-message {
-  color: green;
-}
-.error-message {
-  color: red;
-}
-</style>
