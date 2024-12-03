@@ -10,12 +10,14 @@
       <p><strong>緯度:</strong> {{ cook.lat }}</p>
       <p><strong>経度:</strong> {{ cook.lng }}</p>
     </div>
+    <div v-if="cook.image">
+      <img :src="cook.image" alt="店舗の画像" />
+    </div>
 
     <div v-else>
       <p></p>
     </div>
   </div>
-  <img :src="require(`~/assets/images/${chatan.jpg}.png`)" />
 </template>
 
 <script>
