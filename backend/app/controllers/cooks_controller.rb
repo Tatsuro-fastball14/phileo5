@@ -13,7 +13,7 @@ class CooksController < ApplicationController
   def create
     @cook = Cook.new(cooks_params)
     if  @cook.save
-        render json:{cook:@cook, status:created}  
+        render json:{cook:@cook, status:'create'}  
     else
         render :new
     end
