@@ -43,6 +43,12 @@
         <input v-model="lng" type="number" id="lng" required />
       </div>
 
+      <!-- 画像アップロード -->
+      <div class="form-group">
+        <label for="image">画像アップロード</label>
+        <input @change="handleImageUpload" type="file" id="image" accept="image/*" />
+      </div>
+
       <button type="submit">登録</button>
     </form>
 
@@ -82,6 +88,11 @@ export default {
         formData.append('cook[lat]', this.lat)
         formData.append('cook[lng]', this.lng)
 
+        // 画像ファイルの追加
+        if (this.image) {
+          formData.append('cook[image]', this.image)
+        }
+
         const response = await axios.post('http://localhost:3000/cooks', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -103,6 +114,7 @@ export default {
       this.category = ''
       this.lat = ''
       this.lng = ''
+      this.image = null
     }
   }
 }

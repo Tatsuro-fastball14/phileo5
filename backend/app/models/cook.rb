@@ -1,4 +1,5 @@
 class Cook < ApplicationRecord
+  has_many_attached :images
   validates :store_catchcopy, presence: true
   validates :sentence, presence: true
   validates :address, presence: true
