@@ -13,7 +13,7 @@ class CooksController < ApplicationController
   def create
     @cook = Cook.new(cooks_params)
     if  @cook.save
-        redirect_to root_path
+        render json:{cook:@cook, status:created}  
     else
         render :new
     end
