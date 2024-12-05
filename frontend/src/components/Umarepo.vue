@@ -4,20 +4,20 @@
       タイトル
       <span class="indispenable">必須</span>
     </div>
-    <form @submit.prevent="submitForm" enctype="mulitipart/form-data">
+    <form @submit.prevent="submitForm" enctype="multipart/form-data">
 
     <!-- <--テキスト情報入力--> -->
-     <div class="from-group">
+     <div class="form-group">
        <label for="title">タイトル</label>
        <input v-model="title" type="text" id="title" required/>
     </div>
 
-     <div class="from group">
+     <div class="form group">
        <label for="curator">名前</label>
        <input v-model="curator" type="text" id="curator" required/>
     </div>
 
-    <div class="from group">
+    <div class="form group">
        <label for="comment">コメント</label>
        <input v-model="comment" type="text" id="comment" required/>
     </div>
@@ -42,32 +42,30 @@ export default {
   },
   methods: {
     async submitForm() {
-      try{
-        const FormDate = new FormData()
-        FormDate.append('umarepo[title]',this.title)
-        FormDate.append('umarepo[curator]',this.curator)
-        FormDate.append('umarepo[comment]',this.comment)
+      try {
+        const FormData = new FormData()
+        FormDate.append('umarepo[title]', this.title)
+        FormDate.append('umarepo[curator]', this.curator)
+        FormDate.append('umarepo[comment]', this.comment)
 
-      const response= await axios.post('http://localhost:3000/cooks/' formdata,{
-        headers:{
-          'Content-Type':'multipart/form-data'       
-        }
-      })
+        const response = await axios.post('http://localhost:3000/cooks/', formdata, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
 
-      this.message =response.data.message
-      this.resetFrom()
-      }catch(error){
-        this.errormessage=error.response?.data?.error?.join(',')||'登録に失敗しました。'
+        this.message = response.data.message
+        this.resetFrom()
+      } catch (error) {
+        this.errormessage = error.response?.data?.error?.join(',') || '登録に失敗しました。'
       }
-        
     },
 
     resetFrom() {
-      this.title=''
-      this.curator=''
-      this.comment=''
+      this.title = ''
+      this.curator = ''
+      this.comment = ''
     }
-
   }
 }
 </script>
