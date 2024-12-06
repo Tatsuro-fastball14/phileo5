@@ -4,7 +4,7 @@
       タイトル
       <span class="indispenable">必須</span>
     </div>
-    <form @submit.prevent="submitForm" enctype="multipart/form-data">
+  <form @submit.prevent="submitForm" enctype="multipart/form-data">
 
     <!-- <--テキスト情報入力--> -->
      <div class="form-group">
@@ -20,11 +20,12 @@
     <div class="form group">
        <label for="comment">コメント</label>
        <input v-model="comment" type="text" id="comment" required/>
+       
     </div>
 
     <p v-if="message" class="success-message">{{ message }}</p>
     <p v-if="errormessage" class="success-errormessage">{{ errormessage }}</p>
-  </div>
+  </form>
 </template>
 
 <script>
