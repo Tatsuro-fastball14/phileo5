@@ -23,6 +23,7 @@
 
       <p v-if="message" class="success-message">{{ message }}</p>
       <p v-if="errormessage" class="success-errormessage">{{ errormessage }}</p>
+      <button type="submit">投稿する</button>
     </form>
   </div>
 </template>
