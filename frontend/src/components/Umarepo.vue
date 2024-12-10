@@ -49,7 +49,7 @@ export default {
         formDate.append('umarepo[curator]', this.curator)
         formDate.append('umarepo[comment]', this.comment)
 
-        const response = await axios.post('http://localhost:3000/umarepos/', formdata, {
+        const response = await axios.post('http://localhost:3000/umarepos/', FormData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
