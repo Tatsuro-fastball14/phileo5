@@ -45,9 +45,9 @@ export default {
     async submitForm() {
       try {
         const FormData = new FormData()
-        formDate.append('umarepo[title]', this.title)
-        formDate.append('umarepo[curator]', this.curator)
-        formDate.append('umarepo[comment]', this.comment)
+        FormData.append('umarepo[title]', this.title)
+        FormData.append('umarepo[curator]', this.curator)
+        FormData.append('umarepo[comment]', this.comment)
 
         const response = await axios.post('http://localhost:3000/umarepos/', FormData, {
           headers: {
@@ -58,6 +58,7 @@ export default {
         this.message = response.data.message
         this.resetForm()
       } catch (error) {
+        console.error('エラー詳細:', error)
         this.errormessage = error.response?.data?.error?.join(',') || '登録に失敗しました。'
       }
     },
