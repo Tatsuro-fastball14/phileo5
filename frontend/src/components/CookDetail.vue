@@ -6,7 +6,14 @@
       <p><strong>キャッチコピー:</strong> {{ cook.store_catchcopy }}</p>
       <p><strong>住所:</strong> {{ cook.address }}</p>
       <p><strong>電話番号:</strong> {{ cook.phone_number }}</p>
+      <p><strong>カテゴリー:</strong> {{ cook.category }}</p>
+      <p><strong>緯度:</strong> {{ cook.lat }}</p>
+      <p><strong>経度:</strong> {{ cook.lng }}</p>
     </div>
+    <div v-if="cook.image">
+      <img :src="cook.image" alt="店舗の画像" />
+    </div>
+
     <div v-else>
       <p></p>
     </div>

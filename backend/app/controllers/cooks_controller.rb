@@ -35,6 +35,6 @@ end
 
 private
 
-  def cooks_params
-    params.require(:cook).permit(:store_catchcopy, :sentence, :address, :phone_number,:store,:category,:lat,:lng,images:[],videos:[])
-  end
+def cooks_params
+  params.require(:cook).permit(:store, :store_catchcopy, :sentence, :address, :phone_number, :category, :lat, :lng,images: [])
+end
