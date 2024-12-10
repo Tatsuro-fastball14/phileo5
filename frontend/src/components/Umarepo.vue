@@ -44,14 +44,14 @@ export default {
   methods: {
     async submitForm() {
       try {
-        const FormData = new FormData()
-        FormData.append('umarepo[title]', this.title)
-        FormData.append('umarepo[curator]', this.curator)
-        FormData.append('umarepo[comment]', this.comment)
+        const formData = new FormData()
+        formData.append('umarepo[title]', this.title)
+        formData.append('umarepo[curator]', this.curator)
+        formData.append('umarepo[comment]', this.comment)
 
-        const response = await axios.post('http://localhost:3000/umarepos/', FormData, {
+        const response = await axios.post('http://localhost:3000/umarepos/', formData, {
           headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/Form-ata'
           }
         })
 

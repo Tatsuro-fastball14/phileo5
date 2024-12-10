@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   post  'umarepos/new'
   root to: 'cooks#index'
 
-  
+  resources :umarepos, only:[:index,:new,:create,:show]do
+end
   resources :cooks, only: [:index, :new, :create, :show] do
     collection do
       get 'search' # /cooks/search へのGETリクエストを設定
@@ -17,5 +18,4 @@ Rails.application.routes.draw do
   end
     resources :places, only: [:index, :create] do
     end
-   
 end
