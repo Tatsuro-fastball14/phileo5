@@ -13,6 +13,6 @@ class UmareposController < ApplicationController
   end
 
   def umarepos_params
-    params.require(:umarepo).permit(:title,:curatop,:comment)
+    params.require(:umarepo).permit(:title,:curatop,:comment,:cook_id)
   end
 end
