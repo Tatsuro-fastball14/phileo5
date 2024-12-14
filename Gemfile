@@ -4,4 +4,5 @@ source "https://rubygems.org"
 
 gem 'rails', '~> 7.0.5'
 gem 'devise-jwt'
-
+gem 'pry-byebug'
+gem 'pry-rails'
