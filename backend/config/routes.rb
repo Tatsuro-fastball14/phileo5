@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   post  'cooks/new'
   post  'umarepos/new'
   root to: 'cooks#index'
-
-  resources :umarepos, only:[:index,:new,:create,:show]do
+  resources :cooks do
+    resources :umarepos
 end
   resources :cooks, only: [:index, :new, :create, :show] do
     collection do
