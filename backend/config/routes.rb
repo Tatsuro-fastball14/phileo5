@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/api/place', to: 'places#place'
   get '/api/test', to: 'application#test'
   post  'cooks/new'
-  post  'umarepos/new'
+  post  'umarepos'
   root to: 'cooks#index'
   resources :cooks do
     resources :umarepos
