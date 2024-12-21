@@ -49,7 +49,7 @@ export default {
         formData.append('umarepo[curator]', this.curator)
         formData.append('umarepo[comment]', this.comment)
 
-        const response = await axios.post('http://localhost:3000/umarepos/', formData, {
+        const response = await axios.post('http://localhost:3000/cooks/umarepos/', formData, {
           headers: {
             'Content-Type': 'multipart/Form-ata'
           }
@@ -63,7 +63,7 @@ export default {
       }
     },
 
-    resetFrom() {
+    resetForm() {
       this.title = ''
       this.curator = ''
       this.comment = ''
