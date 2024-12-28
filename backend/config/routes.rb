@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     #   get 'search' # /cooks/search へのGETリクエストを設定
     end
    
-  end
+ 
     resources :places, only: [:index, :create] do
     end
 end
