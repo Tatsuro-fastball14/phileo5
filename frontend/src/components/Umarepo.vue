@@ -32,6 +32,12 @@
 import axios from 'axios'
 
 export default {
+  props: {
+    cookId: {
+      type: Number,
+      required: true
+    }
+  },
   data() {
     return {
       title: '',
@@ -49,13 +55,12 @@ export default {
         formData.append('umarepo[curator]', this.curator)
         formData.append('umarepo[comment]', this.comment)
 
-        const response = await axios.post('http://localhost:3000/cooks/umarepos/', formData, {
-          headers: {
-            'Content-Type': 'multipart/Form-ata'
-          }
-        })
+        const response = await axios.post(
+          `http://localhost:3000/cooks/${this.cookId}/umarepos`,
+          formData
+        )
 
-        this.message = response.data.message
+        this.message = '登録が完了しました。' // APIからの成功メッセージがあればそれを使用
         this.resetForm()
       } catch (error) {
         console.error('エラー詳細:', error)
