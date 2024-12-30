@@ -8,10 +8,9 @@ class UmareposController < ApplicationController
   end
 
   def create
-    binding.pry
     @cook =Cook.find(params[:cook_id])
-    binding.pry
-    @umarepo =cook.umarepos.build(umarepos_params)
+    @umarepo =@cook.umarepos.build(umarepos_params)
+    @umarepo.user_id =current_user.id
   end
 
   private
@@ -19,4 +18,6 @@ class UmareposController < ApplicationController
     params.require(:umarepo).permit(:title,:curatop,:comment,:cook_id)
   end
 end
+
+
 
