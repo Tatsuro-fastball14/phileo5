@@ -21,8 +21,8 @@
         <input v-model="comment" type="text" id="comment" required />
       </div>
 
-      <p v-if="message" class="success-message">{{ message }}</p>
-      <p v-if="errormessage" class="success-errormessage">{{ errormessage }}</p>
+      <p v-show="message" class="success-message">{{ message }}</p>
+      <p v-show="errormessage" class="success-errormessage">{{ errormessage }}</p>
       <button type="submit">投稿する</button>
     </form>
   </div>
@@ -49,6 +49,7 @@ export default {
   },
   methods: {
     async submitForm() {
+      console.log('current cookid:', this.cookid)
       try {
         const formData = new FormData()
         formData.append('umarepo[title]', this.title)
