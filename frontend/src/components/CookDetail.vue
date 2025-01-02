@@ -1,6 +1,12 @@
 <template>
   <div>
     <h1>店舗詳細</h1>
+    <ul>
+      <li v-for="cook in filteredCooks" :key="cook.id">
+        <router-link :to="`/cooks/${cook.id}`">{{ umarepo.new }}</router-link>
+      </li>
+    </ul>
+
     <div v-if="cook">
       <p><strong>店舗名:</strong> {{ cook.store }}</p>
       <p><strong>キャッチコピー:</strong> {{ cook.store_catchcopy }}</p>
