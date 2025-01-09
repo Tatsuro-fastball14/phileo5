@@ -40,14 +40,14 @@ export default {
   },
   data() {
     return {
-      umarepos: []
+      title: '',
+      curator: '',
+      comment: '',
+      message: null,
+      errormessage: ''
     }
   },
 
-  created() {
-    this.fetchMessages()
-    this.createSubscription() // createdフック内でcreateSubscriptionメソッドを呼び出す
-  },
   // 略
   methods: {
     createSubscription() {

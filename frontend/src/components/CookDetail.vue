@@ -3,7 +3,7 @@
     <h1>店舗詳細</h1>
     <ul>
       <li v-for="cook in filteredCooks" :key="cook.id">
-        <router-link :to="`/cooks/${cook.id}/umarepos/new`">{{ cook.store }}</router-link>
+        <router-link :to="`/cooks/${cook.id}/umarepos/new`">ウマレポを作成</router-link>
       </li>
     </ul>
 
@@ -45,6 +45,7 @@ export default {
     axios
       .get(`http://localhost:3000/cooks/${cookId}`) // Rails の show アクションにリクエスト
       .then((response) => {
+        console.log('Cook details:', response.data)
         this.cook = response.data // レスポンスデータを格納
       })
       .catch((error) => {
