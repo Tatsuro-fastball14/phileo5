@@ -40,11 +40,7 @@ export default {
   },
   data() {
     return {
-      title: '',
-      curator: '',
-      comment: '',
-      message: null,
-      errormessage: ''
+      umarepos: []
     }
   },
 

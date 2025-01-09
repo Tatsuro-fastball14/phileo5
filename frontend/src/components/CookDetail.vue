@@ -3,7 +3,7 @@
     <h1>店舗詳細</h1>
     <ul>
       <li v-for="cook in filteredCooks" :key="cook.id">
-        <router-link :to="`/cooks/${cook.id}`">{{ umarepo.new }}</router-link>
+        <router-link :to="`/cooks/${cook.id}/umarepos/new`">{{ cook.store }}</router-link>
       </li>
     </ul>
 
