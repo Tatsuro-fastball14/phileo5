@@ -47,12 +47,15 @@ export default {
       errormessage: ''
     }
   },
-
+  created() {
+    this.fetchMessages()
+    this.createSubscription() // createdフック内でcreateSubscriptionメソッドを呼び出す
+  },
   // 略
   methods: {
     createSubscription() {
       this.subscription = this.cable.subscriptions.create(
-        { channel: 'Umarepo', cook_id: this.cookId },
+        { channel: 'RoomChannel', room_id: this.roomId },
         {
           received: (message) => {
             console.log(message)
@@ -61,6 +64,7 @@ export default {
         }
       )
     },
+    // 略
     async submitForm() {
       console.log('current cookid:', this.cookid)
       try {
