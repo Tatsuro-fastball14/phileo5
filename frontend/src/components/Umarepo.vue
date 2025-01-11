@@ -21,8 +21,8 @@
         <input v-model="comment" type="text" id="comment" required />
       </div>
 
-      <p v-if="message" class="success-message">{{ message }}</p>
-      <p v-if="errormessage" class="success-errormessage">{{ errormessage }}</p>
+      <p v-show="message" class="success-message">{{ message }}</p>
+      <p v-show="errormessage" class="success-errormessage">{{ errormessage }}</p>
       <button type="submit">投稿する</button>
     </form>
   </div>
@@ -32,6 +32,12 @@
 import axios from 'axios'
 
 export default {
+  props: {
+    cookId: {
+      type: Number,
+      required: true
+    }
+  },
   data() {
     return {
       title: '',
@@ -41,28 +47,42 @@ export default {
       errormessage: ''
     }
   },
+
+  // 略
   methods: {
-    async submitForm() {
-      try {
-        const FormData = new FormData()
-        formDate.append('umarepo[title]', this.title)
-        formDate.append('umarepo[curator]', this.curator)
-        formDate.append('umarepo[comment]', this.comment)
-
-        const response = await axios.post('http://localhost:3000/umarepos/', FormData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
+    createSubscription() {
+      this.subscription = this.cable.subscriptions.create(
+        { channel: 'Umarepo', cook_id: this.cookId },
+        {
+          received: (message) => {
+            console.log(message)
+            this.messages.push(message)
           }
-        })
+        }
+      )
+    },
+    async submitForm() {
+      console.log('current cookid:', this.cookid)
+      try {
+        const formData = new FormData()
+        formData.append('umarepo[title]', this.title)
+        formData.append('umarepo[curator]', this.curator)
+        formData.append('umarepo[comment]', this.comment)
 
-        this.message = response.data.message
+        const response = await axios.post(
+          `http://localhost:3000/cooks/${this.cookId}/umarepos`,
+          formData
+        )
+
+        this.message = '登録が完了しました。' // APIからの成功メッセージがあればそれを使用
         this.resetForm()
       } catch (error) {
+        console.error('エラー詳細:', error)
         this.errormessage = error.response?.data?.error?.join(',') || '登録に失敗しました。'
       }
     },
 
-    resetFrom() {
+    resetForm() {
       this.title = ''
       this.curator = ''
       this.comment = ''
