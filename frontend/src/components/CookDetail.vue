@@ -2,9 +2,7 @@
   <div>
     <h1>店舗詳細</h1>
     <ul>
-      <li v-for="cook in filteredCooks" :key="cook.id">
-        <router-link :to="`/cooks/${cook.id}/umarepos/new`">ウマレポを作成</router-link>
-      </li>
+      <router-link :to="`/cooks/${cook.id}/umarepos/new`">ウマレポを作成</router-link>
     </ul>
 
     <div v-if="cook">

@@ -47,10 +47,10 @@ export default {
       errormessage: ''
     }
   },
-  created() {
-    this.fetchMessages()
-    this.createSubscription() // createdフック内でcreateSubscriptionメソッドを呼び出す
-  },
+  // created() {
+  //   this.fetchMessages()
+  //   this.createSubscription() // createdフック内でcreateSubscriptionメソッドを呼び出す
+  // },
   // 略
   methods: {
     createSubscription() {

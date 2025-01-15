@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get  'umarepos/new'
   post 'cooks/umarepos'
   
+  
   resources :cooks do
     resources :umarepos, only:[:new,:create]
     # collection do
