@@ -38,6 +38,7 @@ export default {
       required: true
     }
   },
+
   data() {
     return {
       title: '',
@@ -66,7 +67,7 @@ export default {
     },
     // 略
     async submitForm() {
-      console.log('current cookid:', this.cookid)
+      console.log('current cookId:', this.cookId)
       try {
         const formData = new FormData()
         formData.append('umarepo[title]', this.title)
