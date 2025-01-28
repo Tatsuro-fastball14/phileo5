@@ -7,7 +7,7 @@
 
     <div v-if="cook">
       <p><strong>店舗名:</strong> {{ cook.store }}</p>
-      <p><strong>キャッチコピー:</strong> {{ cook.store_catchcopy }}</p>
+      <p><strong>キャッチコピーz:</strong> {{ cook.curator }}</p>
       <p><strong>住所:</strong> {{ cook.address }}</p>
       <p><strong>電話番号:</strong> {{ cook.phone_number }}</p>
       <p><strong>カテゴリー:</strong> {{ cook.category }}</p>
@@ -16,6 +16,12 @@
     </div>
     <div v-if="cook.image">
       <img :src="cook.image" alt="店舗の画像" />
+    </div>
+
+    <div v-if="umarepo">
+      <p><strong>タイトル:</strong> {{ umarepo.title }}</p>
+      <p><strong>名前:</strong> {{ cook.curator }}</p>
+      <p><strong>コメント:</strong> {{ cook.comment }}</p>
     </div>
 
     <div v-else>
