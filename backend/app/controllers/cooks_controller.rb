@@ -22,7 +22,10 @@ class CooksController < ApplicationController
 
   def show
     @cook = Cook.find(params[:id])
-    render json: @cook
+    # render json: {
+    #   cook_umarepo_output: @cook.as_json(include:  :umarepos)
+    # }
+    render json:  @cook, include: :umarepos
   end
 
   def search
