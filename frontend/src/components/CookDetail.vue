@@ -20,8 +20,8 @@
 
     <div v-if="umarepo">
       <p><strong>タイトル:</strong> {{ umarepo.title }}</p>
-      <p><strong>名前:</strong> {{ cook.curator }}</p>
-      <p><strong>コメント:</strong> {{ cook.comment }}</p>
+      <p><strong>名前:</strong> {{ umarepo.curator }}</p>
+      <p><strong>コメント:</strong> {{ umarepo.comment }}</p>
     </div>
 
     <div v-else>
@@ -36,7 +36,8 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      cook: null // 店舗データ
+      cook: null,
+      umarepo: null // 店舗データ
     }
   },
   created() {

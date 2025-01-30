@@ -1,7 +1,10 @@
 class UmareposController < ApplicationController
   before_action :authenticate_user!, only: [:create]
   
-
+ def index
+    @umarepos = @cook.umarepos
+    render json: @umarepos
+  end
   
   def new 
     @umarepo =Umarepo.new
