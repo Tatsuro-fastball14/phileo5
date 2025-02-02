@@ -70,20 +70,4 @@ export default {
 }
 </script>
 
-created() {
-    // コンポーネントが作成されたときに、チャットルーム一覧を取得する
-    this.fetchChatRooms()
-  },
-  methods: {
-    fetchChatRooms() {
-      axios
-        // 環境変数VITE_API_URLからAPIのURLを取得する
-        .get(`${import.meta.env.VITE_API_URL}/rooms`)
-        .then((response) => {
-          this.chatRooms = response.data
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-    },
 

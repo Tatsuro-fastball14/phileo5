@@ -24,9 +24,12 @@
       <p><strong>コメント:</strong> {{ umarepo.comment }}</p>
     </div>
 
-    <div v-else>
-      <p></p>
-    </div>
+    <!-- umarepoを表示 -->
+    <ul>
+      <li v-for="umarepo in cook.umarepos" :key="umarepo.id">
+        {{ umarepo.title }}-{{ umarepo.curator}}-{{ umarepo.comment }
+      </li>
+    </ul>
   </div>
 </template>
 
