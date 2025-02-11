@@ -26,8 +26,9 @@
 
     <!-- umarepoを表示 -->
     <ul>
-      <li v-for="umarepo in cook.umarepos" :key="umarepo.id"></li>
-        {{ umarepo.title }}-{{ umarepo.curator}}-{{ umarepo.comment }
+      <li v-for="umarepo in cook.umarepos" :key="umarepo.id">
+        {{ umarepo.title }} - {{ umarepo.curator }} - {{ umarepo.comment }}
+      </li>
     </ul>
   </div>
 </template>
