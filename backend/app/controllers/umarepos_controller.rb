@@ -13,10 +13,11 @@ class UmareposController < ApplicationController
 
   def create
     @cook =Cook.find(params[:cook_id])
-    #  binding.pry
+     binding.pry
     @umarepo =@cook.umarepos.build(umarepos_params)
-    #  binding.pry
+     binding.pry
     @umarepo.user_id =current_user.id
+    binding.pry
   end
 
   
