@@ -1,5 +1,5 @@
 class UmareposController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  # before_action :authenticate_user!, only: [:create]
   
  def index
     @umarepos = @cook.umarepos
@@ -13,11 +13,17 @@ class UmareposController < ApplicationController
 
   def create
     @cook =Cook.find(params[:cook_id])
-     binding.pry
+    
     @umarepo =@cook.umarepos.build(umarepos_params)
-     binding.pry
-    @umarepo.user_id =current_user.id
-    binding.pry
+    
+    # @umarepo.user_id =current_user.id
+     if
+      @umarepo.save!
+      redirect_to root_path
+    else
+      render :new
+    end
+   
   end
 
   
