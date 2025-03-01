@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   get  'umarepos/new'
   post 'cooks/umarepos'
   
+  
+  
   resources :cooks do
-    resources :umarepos, only:[:new,:create]
+    resources :umarepos, only:[:index,:new,:create,:show]
     # collection do
     #   get 'search' # /cooks/search へのGETリクエストを設定
     end

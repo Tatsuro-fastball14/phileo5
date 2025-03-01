@@ -49,7 +49,7 @@
         <input @change="handleImageUpload" type="file" id="image" accept="image/*" />
       </div>
 
-      <button type="submit">登録</button>
+      <button @click="uploadImage" type="submit">登録</button>
     </form>
 
     <p v-if="message" class="success-message">{{ message }}</p>
@@ -71,6 +71,8 @@ export default {
       category: '',
       lat: '',
       lng: '',
+      images: '',
+
       message: null,
       errorMessage: null
     }

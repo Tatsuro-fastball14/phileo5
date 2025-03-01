@@ -28,6 +28,7 @@
   </div>
 </template>
 
+
 <script>
 import axios from 'axios'
 
@@ -38,6 +39,7 @@ export default {
       required: true
     }
   },
+
   data() {
     return {
       title: '',
@@ -47,12 +49,15 @@ export default {
       errormessage: ''
     }
   },
-
+  // created() {
+  //   this.fetchMessages()
+  //   this.createSubscription() // createdフック内でcreateSubscriptionメソッドを呼び出す
+  // },
   // 略
   methods: {
     createSubscription() {
       this.subscription = this.cable.subscriptions.create(
-        { channel: 'Umarepo', cook_id: this.cookId },
+        { channel: 'RoomChannel', room_id: this.roomId },
         {
           received: (message) => {
             console.log(message)
@@ -61,8 +66,9 @@ export default {
         }
       )
     },
+    // 略
     async submitForm() {
-      console.log('current cookid:', this.cookid)
+      console.log('current cookId:', this.cookId)
       try {
         const formData = new FormData()
         formData.append('umarepo[title]', this.title)

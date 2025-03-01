@@ -16,7 +16,7 @@ const routes = [
   { path: '/cooks/:id', component: CookDetail, name: 'CookDetail' },
   { path: "/login", component: Login, name: "Login" },
   { path: "/cooks/new", component: CookForm, name: "CookForm" },
-  { path: "/cooks/:id/umarepos/new", component: Umarepo, name: "Umarepo" }
+  { path: "/cooks/:id/umarepos/new", component: Umarepo, props: route => ({ cookId: route.params.id }) },
 
 ];
 
