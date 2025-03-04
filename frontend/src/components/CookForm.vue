@@ -92,7 +92,9 @@ export default {
 
         // 画像ファイルの追加
         if (this.image) {
+          console.log('aaaaa')
           formData.append('cook[image]', this.image)
+          this.createPost(formData)
         }
 
         const response = await axios.post('http://localhost:3000/cooks', formData, {
