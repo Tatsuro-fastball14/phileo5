@@ -71,7 +71,7 @@ export default {
       category: '',
       lat: '',
       lng: '',
-      images: '',
+      image: null,
 
       message: null,
       errorMessage: null
@@ -91,7 +91,7 @@ export default {
         formData.append('cook[lng]', this.lng)
 
         // 画像ファイルの追加
-        if (this.image) {
+        if (this.image !== null) {
           console.log('aaaaa')
           formData.append('cook[image]', this.image)
           this.createPost(formData)
