@@ -46,10 +46,16 @@
       <!-- 画像アップロード -->
       <div class="form-group">
         <label for="image">画像アップロード</label>
-        <input @change="handleImageUpload" type="file" id="image" accept="image/*" />
+        <input
+          type="file"
+          id="image"
+          name="image"
+          accept="image/png,image/jpeg"
+          @change="setImage"
+        />
       </div>
 
-      <button @click="uploadImage" type="submit">登録</button>
+      <button type="submit">登録</button>
     </form>
 
     <p v-if="message" class="success-message">{{ message }}</p>
@@ -78,6 +84,11 @@ export default {
     }
   },
   methods: {
+    setImage(e) {
+      e.preventDefault()
+      this.image = e.target.files[0]
+    },
+
     async submitForm() {
       try {
         const formData = new FormData()
