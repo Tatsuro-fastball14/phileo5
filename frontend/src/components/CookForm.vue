@@ -105,7 +105,6 @@ export default {
         if (this.image !== null) {
           console.log('aaaaa')
           formData.append('cook[image]', this.image)
-          this.createPost(formData)
         }
 
         const response = await axios.post('http://localhost:3000/cooks', formData, {
