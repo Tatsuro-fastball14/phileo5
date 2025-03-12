@@ -55,7 +55,7 @@
         />
       </div>
 
-      <button type="submit">登録</button>
+      <button type="submit" @click="upload" :disabled="title">登録</button>
     </form>
 
     <p v-if="message" class="success-message">{{ message }}</p>
