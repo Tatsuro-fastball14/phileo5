@@ -16,7 +16,7 @@ class CooksController < ApplicationController
     if  @cook.save
         render json cook, methods: [image_uel]
     else
-        render json cook.errors. status: 422
+        render json cook.errors, status: 422
     end
   end
 
