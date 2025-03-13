@@ -14,9 +14,9 @@ class CooksController < ApplicationController
   def create
     @cook = Cook.new(cooks_params)
     if  @cook.save
-        redirect_to root_path
+        render json cook, methods: [image_uel]
     else
-        render :new
+        render json cook.errors. status: 422
     end
   end
 
