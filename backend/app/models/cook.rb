@@ -11,9 +11,9 @@ class Cook < ApplicationRecord
   validates :lat, presence: true, numericality: true
   validates :lng, presence: true, numericality: true
 
-   def image_url
+   def images_urls
     # 紐づいている画像のURLを取得する
-    image.attached? ? url_for(image) : nil
+    images.attached? ? url_for(image) : nil
   end
 end
 

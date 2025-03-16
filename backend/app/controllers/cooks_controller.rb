@@ -14,9 +14,9 @@ class CooksController < ApplicationController
   def create
     @cook = Cook.new(cooks_params)
     if  @cook.save
-        render json cook, methods: [image_uel]
+        render json: @cook, methods: [:images_urls]
     else
-        render json cook.errors, status: 422
+        render json: @cook.errors, status: 422
     end
   end
 
