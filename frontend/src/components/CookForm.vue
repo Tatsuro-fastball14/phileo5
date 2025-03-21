@@ -104,7 +104,7 @@ export default {
         // 画像ファイルの追加
         if (this.image !== null) {
           console.log('aaaaa')
-          formData.append('cook[image]', this.image)
+          formData.append('cook[images][]', this.image)
         }
 
         const response = await axios.post('http://localhost:3000/cooks', formData, {
