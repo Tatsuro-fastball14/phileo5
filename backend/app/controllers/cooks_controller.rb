@@ -25,7 +25,7 @@ class CooksController < ApplicationController
     # render json: {
     #   cook_umarepo_output: @cook.as_json(include:  :umarepos)
     # }
-    render json:  @cook, include: :umarepos
+    render json:  @cook,methods: [:images_url], include: :umarepos
   end
 
   def search
