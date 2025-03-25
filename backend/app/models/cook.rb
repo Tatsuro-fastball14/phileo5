@@ -13,7 +13,7 @@ class Cook < ApplicationRecord
 
    def images_urls
     # 紐づいている画像のURLを取得する
-    images.attached? ? url_for(image) : nil
+    images.attached? ? url_for(images) : nil
   end
 end
 
