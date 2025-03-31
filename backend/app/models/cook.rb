@@ -13,7 +13,7 @@ class Cook < ApplicationRecord
 
    def images_urls
     # 紐づいている画像のURLを取得する
-    rails_blob_path images.attached? ? url_for(images.first) : nil
+    images.attached? ? url_for(images.first) : nil
   end
 end
 
