@@ -77,7 +77,7 @@ export default {
       category: '',
       lat: '',
       lng: '',
-      image: null,
+      images: [],
 
       message: null,
       errorMessage: null
@@ -128,7 +128,7 @@ export default {
       this.category = ''
       this.lat = ''
       this.lng = ''
-      this.image = null
+      this.images = []
     }
   }
 }
