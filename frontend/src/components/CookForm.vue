@@ -48,6 +48,7 @@
         <label for="image">画像アップロード</label>
         <input
           type="file"
+          multiple
           id="image"
           name="image"
           accept="image/png,image/jpeg"
