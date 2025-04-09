@@ -52,7 +52,7 @@
           id="image"
           name="image"
           accept="image/png,image/jpeg"
-          @change="setImage"
+          @change="setImages"
         />
       </div>
 
@@ -85,9 +85,9 @@ export default {
     }
   },
   methods: {
-    setImage(e) {
+    setImages(e) {
       e.preventDefault()
-      this.image = e.target.files[0]
+      this.images = e.target.files[0]
     },
 
     async submitForm() {
@@ -103,9 +103,9 @@ export default {
         formData.append('cook[lng]', this.lng)
 
         // 画像ファイルの追加
-        if (this.image !== null) {
+        if (this.images !== null) {
           console.log('aaaaa')
-          formData.append('cook[images][]', this.image)
+          formData.append('cook[images][]', this.images)
         }
 
         const response = await axios.post('http://localhost:3000/cooks', formData, {
