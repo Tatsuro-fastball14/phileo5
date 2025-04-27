@@ -88,6 +88,10 @@ export default {
     setImages(e) {
       e.preventDefault()
       this.images = e.target.files[0]
+      console.log('bbb:', e.target.files[0])
+      console.log('bbb:', e.target.files[1])
+      console.log('bbb:', e.target.files[2])
+      console.log('===== デバッグ終了 =====')
     },
 
     async submitForm() {
@@ -102,8 +106,8 @@ export default {
         formData.append('cook[lat]', this.lat)
         formData.append('cook[lng]', this.lng)
 
-        // 画像ファイルの追加
-        if (this.images !== null) {
+        // 画像複数ファイルの追加
+        if (this.images && this.images.length > 0) {
           console.log('aaaaa')
           formData.append('cook[images][]', this.images)
         }
