@@ -107,9 +107,12 @@ export default {
         formData.append('cook[lng]', this.lng)
 
         // 画像複数ファイルの追加
-        if (this.images && this.images.length > 0) {
+        if (this.images.forEach(image)) {
           console.log('aaaaa')
           formData.append('cook[images][]', this.images)
+          formData.append('cook[images][]', 画像1)
+          formData.append('cook[images][]', 画像2)
+          formData.append('cook[images][]', 画像3)
         }
 
         const response = await axios.post('http://localhost:3000/cooks', formData, {
