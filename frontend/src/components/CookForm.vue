@@ -106,21 +106,15 @@ export default {
         formData.append('cook[lat]', this.lat)
         formData.append('cook[lng]', this.lng)
 
-        console.log(...formData.entries());
+        console.log(...formData.entries())
 
         // 画像複数ファイルの追加
-        if (this.images.forEach(file, index) => {
-        formData.append('files[' + index + ']', file) // formDataに追加していく
-      })
-          console.log('aaaaa')
-          formData.append('cook[images][]', this.images)
-          formData.append('cook[images][]', this.images[0])
-          formData.append('cook[images][]', 画像2)
-          formData.append('cook[images][]', 画像3)
+        if (this.images && this.images.length > 0) {
+          formData.append('cook[images][]', this.images[2])
+          axios.post(`/api/image`, formData, config).then((rs) => {
+            console.log(rs.data)
+          })
         }
-
-
-
 
         const response = await axios.post('http://localhost:3000/cooks', formData, {
           headers: {
