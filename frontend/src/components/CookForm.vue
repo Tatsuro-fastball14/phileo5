@@ -97,6 +97,7 @@ export default {
     async submitForm() {
       try {
         const formData = new FormData()
+        // 各フィールドをフォームデータに追加
         formData.append('cook[store]', this.store)
         formData.append('cook[store_catchcopy]', this.storeCatchcopy)
         formData.append('cook[sentence]', this.sentence)
@@ -105,10 +106,10 @@ export default {
         formData.append('cook[category]', this.category)
         formData.append('cook[lat]', this.lat)
         formData.append('cook[lng]', this.lng)
-
+        // フォームの中身を確認（開発時のデバッグ用）
         console.log(...formData.entries())
 
-        // 画像複数ファイルの追加
+        // 画像が1枚以上あれば追加処理へ
         if (this.images && this.images.length > 0) {
           formData.append('cook[images][]', this.images[2])
           axios.post(`/api/image`, formData, config).then((rs) => {
