@@ -111,10 +111,16 @@ export default {
 
         // 画像が1枚以上あれば追加処理へ
         if (this.images && this.images.length > 0) {
+          console.log('if文の中に入りました')
+          console.log('画像数:', this.images.length)
           formData.append('cook[images][]', this.images[2])
           axios.post(`/api/image`, formData, config).then((rs) => {
             console.log(rs.data)
           })
+        } else {
+          console.log('if文を通っていません')
+          console.log('this.images:', this.images)
+          console.log('this.images.length:', this.images?.length)
         }
 
         const response = await axios.post('http://localhost:3000/cooks', formData, {
