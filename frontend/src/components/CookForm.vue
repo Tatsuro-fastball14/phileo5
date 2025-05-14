@@ -114,6 +114,7 @@ export default {
           console.log('if文の中に入りました')
           console.log('画像数:', this.images.length)
           formData.append('cook[images][]', this.images[2])
+          console.log('画像[2] の中身を確認します:', this.images.length)
           axios.post(`/api/image`, formData, config).then((rs) => {
             console.log(rs.data)
           })
@@ -121,6 +122,7 @@ export default {
           console.log('if文を通っていません')
           console.log('this.images:', this.images)
           console.log('this.images.length:', this.images?.length)
+          console.error('this.images[2] は undefined または null です！')
         }
 
         const response = await axios.post('http://localhost:3000/cooks', formData, {
