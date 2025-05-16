@@ -113,6 +113,10 @@ export default {
         if (this.images && this.images.length > 0) {
           console.log('if文の中に入りました')
           console.log('画像数:', this.images.length)
+          formData.append('cook[images][]', this.images[0])
+          console.log('画像[0] の中身を確認します:', this.images.length)
+          formData.append('cook[images][]', this.images[1])
+          console.log('画像[1] の中身を確認します:', this.images.length)
           formData.append('cook[images][]', this.images[2])
           console.log('画像[2] の中身を確認します:', this.images.length)
           axios.post(`/api/image`, formData, config).then((rs) => {
@@ -122,6 +126,8 @@ export default {
           console.log('if文を通っていません')
           console.log('this.images:', this.images)
           console.log('this.images.length:', this.images?.length)
+          console.error('this.images[0] は undefined または null です！')
+          console.error('this.images[1] は undefined または null です！')
           console.error('this.images[2] は undefined または null です！')
         }
 
