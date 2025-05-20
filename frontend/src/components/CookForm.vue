@@ -87,7 +87,7 @@ export default {
   methods: {
     setImages(e) {
       e.preventDefault()
-      this.images = e.target.files[0]
+      this.images = Array.from(e.target.files)
       console.log('bbb:', e.target.files[0])
       console.log('bbb:', e.target.files[1])
       console.log('bbb:', e.target.files[2])
