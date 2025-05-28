@@ -113,15 +113,17 @@ export default {
         if (this.images && this.images.length > 0) {
           console.log('if文の中に入りました')
           console.log('画像数:', this.images.length)
-          formData.append('cook[images][]', this.images[0])
-          console.log('画像[0] の中身を確認します:', this.images.length)
-          formData.append('cook[images][]', this.images[1])
-          console.log('画像[1] の中身を確認します:', this.images.length)
-          formData.append('cook[images][]', this.images[2])
-          console.log('画像[2] の中身を確認します:', this.images.length)
-          axios.post(`/api/image`, formData, config).then((rs) => {
-            console.log(rs.data)
+          this.images.forEach((image, index) => {
+            formData.append('cook[images][]', this.images[0])
+            console.log('画像[0] の中身を確認します:', this.images.length)
+            formData.append('cook[images][]', this.images[1])
+            console.log('画像[1] の中身を確認します:', this.images.length)
+            formData.append('cook[images][]', this.images[2])
+            console.log('画像[2] の中身を確認します:', this.images.length)
           })
+          // axios.post(`/api/image`, formData, config).then((rs) => {
+          //   console.log(rs.data)
+          // })
         } else {
           console.log('if文を通っていません')
           console.log('this.images:', this.images)
