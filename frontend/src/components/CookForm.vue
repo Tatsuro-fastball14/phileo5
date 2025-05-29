@@ -120,6 +120,8 @@ export default {
             console.log('画像[1] の中身を確認します:', this.images.length)
             formData.append('cook[images][]', this.images[2])
             console.log('画像[2] の中身を確認します:', this.images.length)
+            console.log(formData.get('images')) // "00000001"
+            console.log(formData.getAll('images')) // ["karabiner", "peter"]
           })
           // axios.post(`/api/image`, formData, config).then((rs) => {
           //   console.log(rs.data)
