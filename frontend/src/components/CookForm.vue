@@ -114,14 +114,7 @@ export default {
           console.log('if文の中に入りました')
           console.log('画像数:', this.images.length)
           this.images.forEach((image, index) => {
-            formData.append('cook[images][]', this.images[0])
-            console.log('画像[0] の中身を確認します:', this.images.length)
-            formData.append('cook[images][]', this.images[1])
-            console.log('画像[1] の中身を確認します:', this.images.length)
-            formData.append('cook[images][]', this.images[2])
-            console.log('画像[2] の中身を確認します:', this.images.length)
-            console.log(formData.get('images')) // "00000001"
-            console.log(formData.getAll('images')) // ["karabiner", "peter"]
+            formData.append('cook[images][]', image)
           })
           // axios.post(`/api/image`, formData, config).then((rs) => {
           //   console.log(rs.data)
