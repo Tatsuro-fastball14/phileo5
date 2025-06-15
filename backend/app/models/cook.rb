@@ -12,9 +12,12 @@ class Cook < ApplicationRecord
   validates :lng, presence: true, numericality: true
 
    def images_urls
-    # 紐づいている画像のURLを取得する
-    images.attached? ? url_for(images.first) : nil
+  if images.attached?
+    images.map { |image| url_for(image) }
+  else
+    []
   end
+end
 end
 
 

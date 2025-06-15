@@ -16,7 +16,7 @@
     </div>
     <div v-if="cook.images_urls">
       <div v-for="(url, index) in cook.images_urls" :key="index">
-        <img :src="cook.images_urls" alt="店舗の画像" style="max-width: 100%; height: auto" />
+        <img :src="url" alt="店舗の画像" style="max-width: 100%; height: auto" />
       </div>
     </div>
 
