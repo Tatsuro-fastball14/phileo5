@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   
   
+  
   resources :cooks do
     resources :umarepos, only:[:index,:new,:create,:show]
     # collection do

@@ -14,8 +14,10 @@
       <p><strong>緯度:</strong> {{ cook.lat }}</p>
       <p><strong>経度:</strong> {{ cook.lng }}</p>
     </div>
-    <div v-if="cook.image">
-      <img :src="cook.image" alt="店舗の画像" />
+    <div v-if="cook.images_urls">
+      <div v-for="(url, index) in cook.images_urls" :key="index">
+        <img :src="url" alt="店舗の画像" style="max-width: 100%; height: auto" />
+      </div>
     </div>
 
     <div v-if="umarepo">

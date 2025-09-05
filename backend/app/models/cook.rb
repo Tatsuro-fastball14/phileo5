@@ -1,4 +1,5 @@
 class Cook < ApplicationRecord
+   include Rails.application.routes.url_helpers
   has_many_attached :images
   has_many :umarepos
   validates :store_catchcopy, presence: true
@@ -9,7 +10,14 @@ class Cook < ApplicationRecord
   validates :category, presence: true
   validates :lat, presence: true, numericality: true
   validates :lng, presence: true, numericality: true
+
+   def images_urls
+  if images.attached?
+    images.map { |image| url_for(image) }
+  else
+    []
+  end
+end
 end
 
 
-  

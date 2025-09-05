@@ -46,10 +46,17 @@
       <!-- 画像アップロード -->
       <div class="form-group">
         <label for="image">画像アップロード</label>
-        <input @change="handleImageUpload" type="file" id="image" accept="image/*" />
+        <input
+          type="file"
+          multiple
+          id="image"
+          name="image"
+          accept="image/png,image/jpeg"
+          @change="setImages"
+        />
       </div>
 
-      <button @click="uploadImage" type="submit">登録</button>
+      <button type="submit" @click="upload" :disabled="title">登録</button>
     </form>
 
     <p v-if="message" class="success-message">{{ message }}</p>
@@ -71,16 +78,26 @@ export default {
       category: '',
       lat: '',
       lng: '',
-      images: '',
+      images: [],
 
       message: null,
       errorMessage: null
     }
   },
   methods: {
+    setImages(e) {
+      e.preventDefault()
+      this.images = Array.from(e.target.files)
+      console.log('bbb:', e.target.files[0])
+      console.log('bbb:', e.target.files[1])
+      console.log('bbb:', e.target.files[2])
+      console.log('===== デバッグ終了 =====')
+    },
+
     async submitForm() {
       try {
         const formData = new FormData()
+        // 各フィールドをフォームデータに追加
         formData.append('cook[store]', this.store)
         formData.append('cook[store_catchcopy]', this.storeCatchcopy)
         formData.append('cook[sentence]', this.sentence)
@@ -89,10 +106,26 @@ export default {
         formData.append('cook[category]', this.category)
         formData.append('cook[lat]', this.lat)
         formData.append('cook[lng]', this.lng)
+        // フォームの中身を確認（開発時のデバッグ用）
+        console.log(...formData.entries())
 
-        // 画像ファイルの追加
-        if (this.image) {
-          formData.append('cook[image]', this.image)
+        // 画像が1枚以上あれば追加処理へ
+        if (this.images && this.images.length > 0) {
+          console.log('if文の中に入りました')
+          console.log('画像数:', this.images.length)
+          this.images.forEach((image, index) => {
+            formData.append('cook[images][]', image)
+          })
+          // axios.post(`/api/image`, formData, config).then((rs) => {
+          //   console.log(rs.data)
+          // })
+        } else {
+          console.log('if文を通っていません')
+          console.log('this.images:', this.images)
+          console.log('this.images.length:', this.images?.length)
+          console.error('this.images[0] は undefined または null です！')
+          console.error('this.images[1] は undefined または null です！')
+          console.error('this.images[2] は undefined または null です！')
         }
 
         const response = await axios.post('http://localhost:3000/cooks', formData, {
@@ -116,7 +149,7 @@ export default {
       this.category = ''
       this.lat = ''
       this.lng = ''
-      this.image = null
+      this.images = []
     }
   }
 }

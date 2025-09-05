@@ -14,9 +14,9 @@ class CooksController < ApplicationController
   def create
     @cook = Cook.new(cooks_params)
     if  @cook.save
-        redirect_to root_path
+        render json: @cook
     else
-        render :new
+        render json: @cook.errors, status: 422
     end
   end
 
@@ -25,7 +25,7 @@ class CooksController < ApplicationController
     # render json: {
     #   cook_umarepo_output: @cook.as_json(include:  :umarepos)
     # }
-    render json:  @cook, include: :umarepos
+    render json:  @cook,methods: [:images_urls], include: :umarepos
   end
 
   def search
