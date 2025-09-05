@@ -13,18 +13,21 @@ class UmareposController < ApplicationController
   end
 
   def create
-    @cook =Cook.find(params[:cook_id])
-   
-    
-    @umarepo =@cook.umarepos.build(umarepos_params)
-     
-    # @umarepo.user_id =current_user.id
-     if
-      @umarepo.save!
-      
-      redirect_to root_path
+    # ネストされた @cook に確実に紐づける。cook_id は params から受け取らない
+    @umarepo = @cook.umarepos.new(umarepo_params)
+    # ユーザー紐づけを使うなら
+    @umarepo.user = current_user if defined?(current_user) && current_user
+
+    if @umarepo.save
+      respond_to do |format|
+        format.html { redirect_to cook_path(@cook), notice: '口コミを投稿しました' }
+        format.json { render json: @umarepo, status: :created }
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: { errors: @umarepo.errors.full_messages }, status: :unprocessable_entity }
+      end
     end
    
   end
